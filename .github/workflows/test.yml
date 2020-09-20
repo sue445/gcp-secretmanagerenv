@@ -51,6 +51,7 @@ jobs:
           make test
           make testrace
 
+      # TODO: DO after
       - name: Run integration test
         run: |
           echo $SERVICE_ACCOUNT_KEY > /tmp/service_account.json
@@ -62,9 +63,6 @@ jobs:
           rm -f /tmp/service_account.json
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-          KMS_KEYRING_KEY_NAME: ${{ secrets.KMS_KEYRING_KEY_NAME }}
-          KMS_INTEGRATION_TEST_KEY: ${{ secrets.KMS_INTEGRATION_TEST_KEY }}
-          INTEGRATION_TEST_WANT: "integration_test_value"
         continue-on-error: true # NOTE: secrets cannot be obtained with forked repository PR
 
       - name: Convert coverage to lcov
