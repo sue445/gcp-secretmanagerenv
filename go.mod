@@ -1,3 +1,3 @@
-module github.com/sue445/gcp-secret_manager_env
+module github.com/sue445/gcp-secretmanagerenv
 
 go 1.15
