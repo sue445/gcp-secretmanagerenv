@@ -51,7 +51,6 @@ jobs:
           make test
           make testrace
 
-      # TODO: DO after
       - name: Run integration test
         run: |
           echo $SERVICE_ACCOUNT_KEY > /tmp/service_account.json
@@ -62,7 +61,9 @@ jobs:
           make test
           rm -f /tmp/service_account.json
         env:
-          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          SERVICE_ACCOUNT_KEY:         ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          INTEGRATION_TEST_PROJECT_ID: ${{ secrets.INTEGRATION_TEST_PROJECT_ID }}
+          INTEGRATION_TEST_WANT:       ${{ secrets.INTEGRATION_TEST_WANT }}
         continue-on-error: true # NOTE: secrets cannot be obtained with forked repository PR
 
       - name: Convert coverage to lcov
