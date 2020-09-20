@@ -1,1 +1,1 @@
-# gcp-secret_manager_env
+# gcp-secretmanagerenv
