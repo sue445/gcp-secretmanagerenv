@@ -11,7 +11,7 @@ import (
 type Client struct {
 	projectID string
 	ctx       context.Context
-	client    *secretmanager.Client
+	client    secretManagerClient
 }
 
 // NewClient creates a new Client instance
