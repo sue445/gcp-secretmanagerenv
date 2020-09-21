@@ -4,6 +4,7 @@ Detect variable from environment variable or [GCP Secret Manager](https://cloud.
 You can access Secret Manager with a syntax similar to `os.Getenv`
 
 [![Build Status](https://github.com/sue445/gcp-secretmanagerenv/workflows/test/badge.svg?branch=master)](https://github.com/sue445/gcp-secretmanagerenv/actions?query=workflow%3Atest)
+[![Coverage Status](https://coveralls.io/repos/github/sue445/gcp-secretmanagerenv/badge.svg)](https://coveralls.io/github/sue445/gcp-secretmanagerenv)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0251ae90c0736a00fdd8/maintainability)](https://codeclimate.com/github/sue445/gcp-secretmanagerenv/maintainability)
 [![GoDoc](https://godoc.org/github.com/sue445/gcp-secretmanagerenv?status.svg)](https://godoc.org/github.com/sue445/gcp-secretmanagerenv)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sue445/gcp-secretmanagerenv)](https://goreportcard.com/report/github.com/sue445/gcp-secretmanagerenv)
