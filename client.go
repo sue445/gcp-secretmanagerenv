@@ -5,6 +5,8 @@ import (
 	"context"
 	"fmt"
 	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
+	"os"
+	"strings"
 )
 
 // Client represents secretmanagerenv client
@@ -27,6 +29,20 @@ func NewClient(ctx context.Context, projectID string) (*Client, error) {
 		client:    client,
 	}
 	return c, nil
+}
+
+// GetValueFromEnvOrSecretManager returns value from environment variable or Secret Manager
+func (c *Client) GetValueFromEnvOrSecretManager(key string, required bool) (string, error) {
+	if os.Getenv(key) != "" {
+		return strings.TrimSpace(os.Getenv(key)), nil
+	}
+
+	ret, err := c.GetSecretManagerValue(key, "latest")
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimSpace(ret), nil
 }
 
 // GetSecretManagerValue returns value from SecretManager

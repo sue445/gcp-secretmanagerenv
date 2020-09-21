@@ -30,9 +30,63 @@ func setupSecretManagerMock(ctx context.Context, t *testing.T) secretManagerClie
 	m.
 		EXPECT().
 		AccessSecretVersion(ctx, req).
-		Return(resp, nil)
+		Return(resp, nil).
+		AnyTimes()
 
 	return m
+}
+
+func TestClient_GetValueFromEnvOrSecretManager(t *testing.T) {
+	ctx := context.Background()
+	m := setupSecretManagerMock(ctx, t)
+
+	c := &Client{projectID: "test", ctx: ctx, client: m}
+
+	os.Setenv("ENV_KEY", "env_value")
+	t.Cleanup(func() {
+		os.Unsetenv("ENV_KEY")
+	})
+
+	type args struct {
+		key      string
+		required bool
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "Get from env",
+			args: args{
+				key:      "ENV_KEY",
+				required: true,
+			},
+			want: "env_value",
+		},
+		{
+			name: "Get from Secret Manager",
+			args: args{
+				key:      "SECRET_MANAGER_KEY",
+				required: true,
+			},
+			want: "secret_value",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := c.GetValueFromEnvOrSecretManager(tt.args.key, tt.args.required)
+
+			if tt.wantErr {
+				assert.Error(t, err)
+			} else {
+				if assert.NoError(t, err) {
+					assert.Equal(t, tt.want, got)
+				}
+			}
+		})
+	}
 }
 
 func TestClient_GetSecretManagerValue(t *testing.T) {
