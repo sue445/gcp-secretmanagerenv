@@ -2,6 +2,7 @@ package secretmanagerenv
 
 import (
 	"context"
+	"fmt"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"github.com/sue445/gcp-secretmanagerenv/mock_secretmanagerenv"
@@ -10,12 +11,16 @@ import (
 	"testing"
 )
 
-func setupSecretManagerMock(ctx context.Context, t *testing.T) secretManagerClient {
+func setupSecretManagerMock(ctx context.Context, t *testing.T) *mock_secretmanagerenv.MocksecretManagerClient {
 	ctrl := gomock.NewController(t)
 	t.Cleanup(func() {
 		ctrl.Finish()
 	})
 
+	return mock_secretmanagerenv.NewMocksecretManagerClient(ctrl)
+}
+
+func stubAccessSecretVersionWithValidResponse(ctx context.Context, m *mock_secretmanagerenv.MocksecretManagerClient) {
 	req := &secretmanagerpb.AccessSecretVersionRequest{
 		Name: "projects/test/secrets/SECRET_MANAGER_KEY/versions/latest",
 	}
@@ -26,19 +31,29 @@ func setupSecretManagerMock(ctx context.Context, t *testing.T) secretManagerClie
 		},
 	}
 
-	m := mock_secretmanagerenv.NewMocksecretManagerClient(ctrl)
 	m.
 		EXPECT().
 		AccessSecretVersion(ctx, req).
 		Return(resp, nil).
 		AnyTimes()
-
-	return m
 }
 
-func TestClient_GetValueFromEnvOrSecretManager(t *testing.T) {
+func stubAccessSecretVersionWithInvalidResponse(ctx context.Context, m *mock_secretmanagerenv.MocksecretManagerClient) {
+	req := &secretmanagerpb.AccessSecretVersionRequest{
+		Name: "projects/test/secrets/INVALID_KEY/versions/latest",
+	}
+
+	m.
+		EXPECT().
+		AccessSecretVersion(ctx, req).
+		Return(nil, fmt.Errorf("rpc error: code = NotFound desc = Secret [projects/000000000000/secrets/INVALID_KEY] not found or has no versions")).
+		AnyTimes()
+}
+
+func TestClient_GetValueFromEnvOrSecretManager_WithValidKey(t *testing.T) {
 	ctx := context.Background()
 	m := setupSecretManagerMock(ctx, t)
+	stubAccessSecretVersionWithValidResponse(ctx, m)
 
 	c := &Client{projectID: "test", ctx: ctx, client: m}
 
@@ -89,9 +104,59 @@ func TestClient_GetValueFromEnvOrSecretManager(t *testing.T) {
 	}
 }
 
+func TestClient_GetValueFromEnvOrSecretManager_WithInvalidKey(t *testing.T) {
+	ctx := context.Background()
+	m := setupSecretManagerMock(ctx, t)
+	stubAccessSecretVersionWithInvalidResponse(ctx, m)
+
+	c := &Client{projectID: "test", ctx: ctx, client: m}
+
+	type args struct {
+		key      string
+		required bool
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "NotFound in Secret manager (required)",
+			args: args{
+				key:      "INVALID_KEY",
+				required: true,
+			},
+			wantErr: true,
+		},
+		{
+			name: "NotFound in Secret manager (optional)",
+			args: args{
+				key:      "INVALID_KEY",
+				required: false,
+			},
+			want: "",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := c.GetValueFromEnvOrSecretManager(tt.args.key, tt.args.required)
+
+			if tt.wantErr {
+				assert.Error(t, err)
+			} else {
+				if assert.NoError(t, err) {
+					assert.Equal(t, tt.want, got)
+				}
+			}
+		})
+	}
+}
+
 func TestClient_GetSecretManagerValue(t *testing.T) {
 	ctx := context.Background()
 	m := setupSecretManagerMock(ctx, t)
+	stubAccessSecretVersionWithValidResponse(ctx, m)
 
 	c := &Client{projectID: "test", ctx: ctx, client: m}
 
@@ -112,11 +177,11 @@ func TestClient_GetSecretManagerValue_IntegrationTest(t *testing.T) {
 		return
 	}
 
-	got, err := c.GetSecretManagerValue("SECRET_MANAGER_KEY", "latest")
+	got1, err := c.GetSecretManagerValue("SECRET_MANAGER_KEY", "latest")
 	if assert.NoError(t, err) {
-		assert.Equal(t, os.Getenv("INTEGRATION_TEST_WANT"), got)
+		assert.Equal(t, os.Getenv("INTEGRATION_TEST_WANT"), got1)
 	}
 
 	_, err = c.GetSecretManagerValue("INVALID_KEY", "latest")
-	assert.NoError(t, err)
+	assert.Error(t, err)
 }

@@ -39,10 +39,13 @@ func (c *Client) GetValueFromEnvOrSecretManager(key string, required bool) (stri
 
 	ret, err := c.GetSecretManagerValue(key, "latest")
 	if err != nil {
+		if !required && strings.Contains(err.Error(), "code = NotFound") {
+			return "", nil
+		}
 		return "", err
 	}
 
-	return strings.TrimSpace(ret), nil
+	return ret, nil
 }
 
 // GetSecretManagerValue returns value from SecretManager
@@ -58,5 +61,5 @@ func (c *Client) GetSecretManagerValue(key string, version string) (string, erro
 
 	str := string(resp.Payload.Data)
 
-	return str, nil
+	return strings.TrimSpace(str), nil
 }
