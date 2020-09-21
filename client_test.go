@@ -116,4 +116,7 @@ func TestClient_GetSecretManagerValue_IntegrationTest(t *testing.T) {
 	if assert.NoError(t, err) {
 		assert.Equal(t, os.Getenv("INTEGRATION_TEST_WANT"), got)
 	}
+
+	_, err = c.GetSecretManagerValue("INVALID_KEY", "latest")
+	assert.NoError(t, err)
 }
