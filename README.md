@@ -9,6 +9,9 @@ You can access Secret Manager with a syntax similar to `os.Getenv`
 [![GoDoc](https://godoc.org/github.com/sue445/gcp-secretmanagerenv?status.svg)](https://godoc.org/github.com/sue445/gcp-secretmanagerenv)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sue445/gcp-secretmanagerenv)](https://goreportcard.com/report/github.com/sue445/gcp-secretmanagerenv)
 
+## Requirements
+Add IAM role `roles/secretmanager.secretAccessor` to service account if necessary.
+
 ## Usage
 ```go
 package main
