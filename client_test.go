@@ -109,20 +109,25 @@ func TestClient_GetValueFromEnvOrSecretManager_WithInvalidKey(t *testing.T) {
 	m := setupSecretManagerMock(ctx, t)
 	stubAccessSecretVersionWithInvalidResponse(ctx, m)
 
-	c := &Client{projectID: "test", ctx: ctx, client: m}
-
+	type fields struct {
+		projectID string
+	}
 	type args struct {
 		key      string
 		required bool
 	}
 	tests := []struct {
 		name    string
+		fields  fields
 		args    args
 		want    string
 		wantErr bool
 	}{
 		{
 			name: "NotFound in Secret manager (required)",
+			fields: fields{
+				projectID: "test",
+			},
 			args: args{
 				key:      "INVALID_KEY",
 				required: true,
@@ -131,8 +136,33 @@ func TestClient_GetValueFromEnvOrSecretManager_WithInvalidKey(t *testing.T) {
 		},
 		{
 			name: "NotFound in Secret manager (optional)",
+			fields: fields{
+				projectID: "test",
+			},
 			args: args{
 				key:      "INVALID_KEY",
+				required: false,
+			},
+			want: "",
+		},
+		{
+			name: "When projectID is empty, don't check Secret Manager (required)",
+			fields: fields{
+				projectID: "",
+			},
+			args: args{
+				key:      "THE_KEY_WHICH_MUST_NOT_TO_BE_CALLED",
+				required: true,
+			},
+			wantErr: true,
+		},
+		{
+			name: "When projectID is empty, don't check Secret Manager (optional)",
+			fields: fields{
+				projectID: "",
+			},
+			args: args{
+				key:      "THE_KEY_WHICH_MUST_NOT_TO_BE_CALLED",
 				required: false,
 			},
 			want: "",
@@ -140,6 +170,8 @@ func TestClient_GetValueFromEnvOrSecretManager_WithInvalidKey(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			c := &Client{projectID: tt.fields.projectID, ctx: ctx, client: m}
+
 			got, err := c.GetValueFromEnvOrSecretManager(tt.args.key, tt.args.required)
 
 			if tt.wantErr {

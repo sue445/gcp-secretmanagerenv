@@ -18,16 +18,19 @@ type Client struct {
 
 // NewClient creates a new Client instance
 func NewClient(ctx context.Context, projectID string) (*Client, error) {
-	client, err := secretmanager.NewClient(ctx)
-	if err != nil {
-		return nil, err
-	}
-
 	c := &Client{
 		projectID: projectID,
 		ctx:       ctx,
-		client:    client,
 	}
+
+	if projectID != "" {
+		client, err := secretmanager.NewClient(ctx)
+		if err != nil {
+			return nil, err
+		}
+		c.client = client
+	}
+
 	return c, nil
 }
 
@@ -35,6 +38,14 @@ func NewClient(ctx context.Context, projectID string) (*Client, error) {
 func (c *Client) GetValueFromEnvOrSecretManager(key string, required bool) (string, error) {
 	if os.Getenv(key) != "" {
 		return strings.TrimSpace(os.Getenv(key)), nil
+	}
+
+	if c.projectID == "" {
+		if required {
+			return "", fmt.Errorf("%s is required in environment variable", key)
+		}
+
+		return "", nil
 	}
 
 	ret, err := c.GetSecretManagerValue(key, "latest")
