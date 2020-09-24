@@ -42,6 +42,14 @@ func main() {
 }
 ```
 
+### Specification
+When `c.GetValueFromEnvOrSecretManager(key, required)` is called, processing is performed in the following order
+
+1. Returns environment variable if `key` is found
+2. Returns latest version value of Secret Manager if `projectID` isn't empty and `key` is found
+3. Returns `""` if `required == false`
+4. Returns `error` if `required == true`
+
 ## Development
 ### Setup
 requires https://github.com/direnv/direnv
