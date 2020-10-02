@@ -3,9 +3,9 @@ module github.com/sue445/gcp-secretmanagerenv
 go 1.15
 
 require (
-	cloud.google.com/go v0.66.0
+	cloud.google.com/go v0.67.0
 	github.com/golang/mock v1.4.4
 	github.com/googleapis/gax-go/v2 v2.0.5
 	github.com/stretchr/testify v1.6.1
-	google.golang.org/genproto v0.0.0-20200918140846-d0d605568037
+	google.golang.org/genproto v0.0.0-20200929141702-51c3e5b607fe
 )
