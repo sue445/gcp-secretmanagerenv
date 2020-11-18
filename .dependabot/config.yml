@@ -13,7 +13,7 @@ update_configs:
 
     automerged_updates:
       - match:
-          update_type: "semver:patch"
+          update_type: "semver:minor"
       - match:
           dependency_name: "github.com/stretchr/testify"
           update_type: "all"
