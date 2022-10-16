@@ -5,7 +5,7 @@ go 1.15
 require (
 	cloud.google.com/go/secretmanager v1.7.0
 	github.com/golang/mock v1.6.0
-	github.com/googleapis/gax-go/v2 v2.5.1
+	github.com/googleapis/gax-go/v2 v2.6.0
 	github.com/stretchr/testify v1.8.0
-	google.golang.org/genproto v0.0.0-20220920201722-2b89144ce006
+	google.golang.org/genproto v0.0.0-20221010155953-15ba04fc1c0e
 )
