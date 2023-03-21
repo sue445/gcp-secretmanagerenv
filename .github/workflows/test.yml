@@ -38,7 +38,6 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: ${{ matrix.golang }}
-          cache: true
         id: go
 
       - name: Run test
@@ -99,7 +98,6 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version-file: "go.mod"
-          cache: true
         id: go
 
       - name: Run lint
