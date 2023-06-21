@@ -3,7 +3,7 @@ module github.com/sue445/gcp-secretmanagerenv
 go 1.17
 
 require (
-	cloud.google.com/go/secretmanager v1.11.0
+	cloud.google.com/go/secretmanager v1.11.1
 	github.com/golang/mock v1.6.0
 	github.com/googleapis/gax-go/v2 v2.11.0
 	github.com/stretchr/testify v1.8.4
@@ -13,7 +13,7 @@ require (
 require (
 	cloud.google.com/go/compute v1.19.3 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
-	cloud.google.com/go/iam v1.0.1 // indirect
+	cloud.google.com/go/iam v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
