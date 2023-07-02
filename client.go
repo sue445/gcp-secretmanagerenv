@@ -4,6 +4,7 @@ import (
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	"context"
 	"fmt"
+	"github.com/cockroachdb/errors"
 	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 	"os"
 	"strings"
@@ -26,7 +27,7 @@ func NewClient(ctx context.Context, projectID string) (*Client, error) {
 	if projectID != "" {
 		client, err := secretmanager.NewClient(ctx)
 		if err != nil {
-			return nil, err
+			return nil, errors.WithStack(err)
 		}
 		c.client = client
 	}
@@ -67,7 +68,7 @@ func (c *Client) GetSecretManagerValue(key string, version string) (string, erro
 
 	resp, err := c.client.AccessSecretVersion(c.ctx, req)
 	if err != nil {
-		return "", err
+		return "", errors.WithStack(err)
 	}
 
 	str := string(resp.Payload.Data)
