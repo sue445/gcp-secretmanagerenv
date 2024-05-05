@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/secretmanager v1.13.0
 	github.com/cockroachdb/errors v1.11.1
 	github.com/golang/mock v1.6.0
-	github.com/googleapis/gax-go/v2 v2.12.3
+	github.com/googleapis/gax-go/v2 v2.12.4
 	github.com/stretchr/testify v1.9.0
 	google.golang.org/genproto v0.0.0-20240401170217-c3f982113cda
 )
