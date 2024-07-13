@@ -1,5 +1,12 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.1...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.2...master)
+
+## [v0.2.2](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.2)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.1...v0.2.2)
+
+* Add golangci-lint
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/134
+* Upgrade dependencies
 
 ## v0.2.1
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.0...v0.2.1)
