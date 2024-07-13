@@ -1,9 +1,8 @@
 package secretmanagerenv
 
 import (
-	"context"
-
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
+	"context"
 	"github.com/googleapis/gax-go/v2"
 )
 

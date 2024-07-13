@@ -7,7 +7,6 @@ package mock_secretmanagerenv
 import (
 	context "context"
 	reflect "reflect"
-
 	secretmanager "cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	gomock "github.com/golang/mock/gomock"
 	gax "github.com/googleapis/gax-go/v2"
