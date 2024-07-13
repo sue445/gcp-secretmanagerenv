@@ -3,13 +3,14 @@ package secretmanagerenv
 import (
 	"context"
 	"fmt"
+	"os"
+	"testing"
+
+	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/sue445/gcp-secretmanagerenv/mock_secretmanagerenv"
-	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
-	"os"
-	"testing"
 )
 
 func setupSecretManagerMock(ctx context.Context, t *testing.T) *mock_secretmanagerenv.MocksecretManagerClient {
