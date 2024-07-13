@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-func setupSecretManagerMock(ctx context.Context, t *testing.T) *mock_secretmanagerenv.MocksecretManagerClient {
+func setupSecretManagerMock(_ context.Context, t *testing.T) *mock_secretmanagerenv.MocksecretManagerClient {
 	ctrl := gomock.NewController(t)
 	t.Cleanup(func() {
 		ctrl.Finish()
