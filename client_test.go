@@ -1,17 +1,18 @@
 package secretmanagerenv
 
 import (
+	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"context"
 	"fmt"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/sue445/gcp-secretmanagerenv/mock_secretmanagerenv"
-	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 	"os"
 	"testing"
 )
 
-func setupSecretManagerMock(ctx context.Context, t *testing.T) *mock_secretmanagerenv.MocksecretManagerClient {
+func setupSecretManagerMock(_ context.Context, t *testing.T) *mock_secretmanagerenv.MocksecretManagerClient {
 	ctrl := gomock.NewController(t)
 	t.Cleanup(func() {
 		ctrl.Finish()
@@ -205,9 +206,7 @@ func TestClient_GetSecretManagerValue_IntegrationTest(t *testing.T) {
 
 	ctx := context.Background()
 	c, err := NewClient(ctx, os.Getenv("INTEGRATION_TEST_PROJECT_ID"))
-	if !assert.NoError(t, err) {
-		return
-	}
+	require.NoError(t, err)
 
 	got1, err := c.GetSecretManagerValue("SECRET_MANAGER_KEY", "latest")
 	if assert.NoError(t, err) {

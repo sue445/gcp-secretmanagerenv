@@ -2,10 +2,10 @@ package secretmanagerenv
 
 import (
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
+	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"context"
 	"fmt"
 	"github.com/cockroachdb/errors"
-	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 	"os"
 	"strings"
 )
