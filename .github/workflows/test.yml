@@ -14,6 +14,13 @@ env:
   GO111MODULE: "on"
   TEST_ARGS: -coverprofile coverage.out -covermode atomic
 
+  WORKLOAD_IDENTITY_PROVIDER: "projects/764608268123/locations/global/workloadIdentityPools/gh-gcp-secretmanagerenv/providers/github-actions"
+  SERVICE_ACCOUNT_EMAIL: "gcp-secretmanagerenv@secretmanagerenv.iam.gserviceaccount.com"
+
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   test:
     name: test
@@ -45,17 +52,16 @@ jobs:
           make test
           make testrace
 
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
+
       - name: Run integration test
-        run: |
-          echo $SERVICE_ACCOUNT_KEY > /tmp/service_account.json
-
-          # c.f. https://cloud.google.com/docs/authentication/production
-          export GOOGLE_APPLICATION_CREDENTIALS=/tmp/service_account.json
-
-          make test
-          rm -f /tmp/service_account.json
+        run: make test
         env:
-          SERVICE_ACCOUNT_KEY:         ${{ secrets.SERVICE_ACCOUNT_KEY }}
           INTEGRATION_TEST_PROJECT_ID: ${{ secrets.INTEGRATION_TEST_PROJECT_ID }}
           INTEGRATION_TEST_WANT:       ${{ secrets.INTEGRATION_TEST_WANT }}
         continue-on-error: true # NOTE: secrets cannot be obtained with forked repository PR
