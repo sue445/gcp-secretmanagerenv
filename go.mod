@@ -1,7 +1,8 @@
 module github.com/sue445/gcp-secretmanagerenv
 
-go 1.21
-toolchain go1.22.11
+go 1.22.7
+
+toolchain go1.23.4
 
 require (
 	cloud.google.com/go/secretmanager v1.14.4
