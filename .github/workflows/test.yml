@@ -12,7 +12,7 @@ on:
 
 env:
   TEST_ARGS: -coverprofile coverage.out -covermode atomic
-  GOLANGCI_LINT_VERSION: v1.58
+  GOLANGCI_LINT_VERSION: v1.63
 
   WORKLOAD_IDENTITY_PROVIDER: "projects/764608268123/locations/global/workloadIdentityPools/gh-gcp-secretmanagerenv/providers/github-actions"
   SERVICE_ACCOUNT_EMAIL: "gcp-secretmanagerenv@secretmanagerenv.iam.gserviceaccount.com"
@@ -32,7 +32,6 @@ jobs:
 
       matrix:
         golang:
-          - "1.21"
           - "1.22"
           - "1.23"
 
