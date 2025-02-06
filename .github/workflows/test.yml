@@ -12,6 +12,8 @@ on:
 
 env:
   TEST_ARGS: -coverprofile coverage.out -covermode atomic
+
+  # c.f. https://github.com/golangci/golangci-lint/blob/master/CHANGELOG.md
   GOLANGCI_LINT_VERSION: v1.63
 
   WORKLOAD_IDENTITY_PROVIDER: "projects/764608268123/locations/global/workloadIdentityPools/gh-gcp-secretmanagerenv/providers/github-actions"
