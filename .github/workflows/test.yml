@@ -14,7 +14,7 @@ env:
   TEST_ARGS: -coverprofile coverage.out -covermode atomic
 
   # c.f. https://github.com/golangci/golangci-lint/blob/main/CHANGELOG.md
-  GOLANGCI_LINT_VERSION: v2.1
+  GOLANGCI_LINT_VERSION: v2.4
 
   WORKLOAD_IDENTITY_PROVIDER: "projects/764608268123/locations/global/workloadIdentityPools/gh-gcp-secretmanagerenv/providers/github-actions"
   SERVICE_ACCOUNT_EMAIL: "gcp-secretmanagerenv@secretmanagerenv.iam.gserviceaccount.com"
@@ -36,6 +36,7 @@ jobs:
         golang:
           - "1.23"
           - "1.24"
+          - "1.25"
 
     steps:
       - name: Check out code into the Go module directory
