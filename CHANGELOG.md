@@ -1,5 +1,12 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.5...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.6...master)
+
+## [v0.2.5](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.6)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.5...v0.2.6)
+
+* Requires Go 1.24
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/173
+* Upgrade dependencies
 
 ## [v0.2.5](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.5)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.4...v0.2.5)
