@@ -5,7 +5,7 @@ go 1.24.0
 toolchain go1.24.1
 
 require (
-	cloud.google.com/go/secretmanager v1.15.1
+	cloud.google.com/go/secretmanager v1.16.0
 	github.com/cockroachdb/errors v1.12.0
 	github.com/golang/mock v1.6.0
 	github.com/googleapis/gax-go/v2 v2.15.0
