@@ -1,7 +1,14 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.6...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.7...master)
 
-## [v0.2.5](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.6)
+## [v0.2.7](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.7)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.6...v0.2.7)
+
+* [CVE-2025-58181] Bump golang.org/x/crypto from 0.41.0 to 0.45.0
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/182
+* Upgrade dependencies
+
+## [v0.2.6](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.6)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.5...v0.2.6)
 
 * Requires Go 1.24
