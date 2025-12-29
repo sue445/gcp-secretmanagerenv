@@ -6,7 +6,7 @@ You can access Secret Manager with a syntax similar to `os.Getenv`
 [![Latest Version](https://img.shields.io/github/v/tag/sue445/gcp-secretmanagerenv)](https://github.com/sue445/gcp-secretmanagerenv/tags)
 [![test](https://github.com/sue445/gcp-secretmanagerenv/actions/workflows/test.yml/badge.svg)](https://github.com/sue445/gcp-secretmanagerenv/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/sue445/gcp-secretmanagerenv/badge.svg)](https://coveralls.io/github/sue445/gcp-secretmanagerenv)
-[![Maintainability](https://api.codeclimate.com/v1/badges/0251ae90c0736a00fdd8/maintainability)](https://codeclimate.com/github/sue445/gcp-secretmanagerenv/maintainability)
+[![Maintainability](https://qlty.sh/gh/sue445/projects/gcp-secretmanagerenv/maintainability.svg)](https://qlty.sh/gh/sue445/projects/gcp-secretmanagerenv)
 [![GoDoc](https://godoc.org/github.com/sue445/gcp-secretmanagerenv?status.svg)](https://godoc.org/github.com/sue445/gcp-secretmanagerenv)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sue445/gcp-secretmanagerenv)](https://goreportcard.com/report/github.com/sue445/gcp-secretmanagerenv)
 
