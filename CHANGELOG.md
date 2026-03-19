@@ -1,5 +1,12 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.7...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.8...master)
+
+## [v0.2.8](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.8)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.7...v0.2.8)
+
+* [CVE-2026-33186] Bump google.golang.org/grpc from 1.78.0 to 1.79.3
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/195
+* Upgrade dependencies
 
 ## [v0.2.7](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.7)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.6...v0.2.7)
