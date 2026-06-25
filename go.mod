@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	cloud.google.com/go/secretmanager v1.20.0
-	github.com/cockroachdb/errors v1.13.0
+	github.com/cockroachdb/errors v1.14.0
 	github.com/golang/mock v1.6.0
 	github.com/googleapis/gax-go/v2 v2.22.0
 	github.com/stretchr/testify v1.11.1
