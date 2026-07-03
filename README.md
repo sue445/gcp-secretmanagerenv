@@ -8,7 +8,6 @@ You can access Secret Manager with a syntax similar to `os.Getenv`
 [![Coverage Status](https://coveralls.io/repos/github/sue445/gcp-secretmanagerenv/badge.svg)](https://coveralls.io/github/sue445/gcp-secretmanagerenv)
 [![Maintainability](https://qlty.sh/gh/sue445/projects/gcp-secretmanagerenv/maintainability.svg)](https://qlty.sh/gh/sue445/projects/gcp-secretmanagerenv)
 [![GoDoc](https://godoc.org/github.com/sue445/gcp-secretmanagerenv?status.svg)](https://godoc.org/github.com/sue445/gcp-secretmanagerenv)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sue445/gcp-secretmanagerenv)](https://goreportcard.com/report/github.com/sue445/gcp-secretmanagerenv)
 
 ## Requirements
 Add IAM role `roles/secretmanager.secretAccessor` to service account if necessary.
