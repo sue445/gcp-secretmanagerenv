@@ -1,11 +1,19 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.9...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.10...master)
+
+## [v0.2.10](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.10)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.9...v0.2.10)
+
+* [GHSA-hrxh-6v49-42gf] Bump google.golang.org/grpc from 1.82.0 to 1.82.1
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/214
+* Upgrade dependencies
 
 ## [v0.2.9](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.9)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.8...v0.2.9)
 
 * Requires Go 1.25
   * https://github.com/sue445/gcp-secretmanagerenv/pull/194
+* Upgrade dependencies
 
 ## [v0.2.8](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.8)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.7...v0.2.8)
