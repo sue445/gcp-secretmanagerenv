@@ -1,5 +1,12 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.10...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.11...master)
+
+## [v0.2.11](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.11)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.10...v0.2.11)
+
+* [CVE-2026-56852] Bump golang.org/x/text from 0.38.0 to 0.41.0
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/221
+* Upgrade dependencies
 
 ## [v0.2.10](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.10)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.9...v0.2.10)
