@@ -1,10 +1,17 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.13...master)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.14...master)
+
+## [v0.2.14](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.14)
+[full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.13...v0.2.14)
+
+* Requires Go 1.26
+  * https://github.com/sue445/gcp-secretmanagerenv/pull/229
+* Upgrade dependencies
 
 ## [v0.2.13](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.13)
 [full changelog](http://github.com/sue445/gcp-secretmanagerenv/compare/v0.2.12...v0.2.13)
 
-* [CVE-2026-84445] Bump google.golang.org/grpc from 1.83.1 to 1.83.2- #227
+* [CVE-2026-84445] Bump google.golang.org/grpc from 1.83.1 to 1.83.2
   * https://github.com/sue445/gcp-secretmanagerenv/pull/227
 
 ## [v0.2.12](https://github.com/sue445/gcp-secretmanagerenv/releases/tag/v0.2.12)
