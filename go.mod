@@ -3,7 +3,7 @@ module github.com/sue445/gcp-secretmanagerenv
 go 1.26.0
 
 require (
-	cloud.google.com/go/secretmanager v1.21.0
+	cloud.google.com/go/secretmanager v1.22.0
 	github.com/cockroachdb/errors v1.14.0
 	github.com/golang/mock v1.6.0
 	github.com/googleapis/gax-go/v2 v2.26.0
